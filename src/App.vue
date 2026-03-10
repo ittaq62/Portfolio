@@ -1,8 +1,9 @@
 <template>
   <div id="app">
-    <h1>Mon e-CV</h1>
+    <HeroSection />
   </div>
 </template>
 
 <script setup>
+import HeroSection from './components/HeroSection.vue'
 </script>
