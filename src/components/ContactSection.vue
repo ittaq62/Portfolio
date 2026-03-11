@@ -13,6 +13,13 @@
             <span class="contact__value">quentindouilly1@gmail.com</span>
           </div>
         </a>
+        <a href="https://www.linkedin.com/in/quentin-douilly-259b20354/" target="_blank" class="contact__item">
+          <span class="contact__icon">💼</span>
+          <div>
+            <span class="contact__label">LinkedIn</span>
+            <span class="contact__value">Quentin Douilly</span>
+          </div>
+        </a>
         <a href="https://github.com/ittaq62" target="_blank" class="contact__item">
           <span class="contact__icon">🐙</span>
           <div>
