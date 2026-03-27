@@ -52,43 +52,67 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
-  transition: background 0.3s, padding 0.3s;
+  padding: 1.2rem 2.5rem;
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .navbar.scrolled {
-  background: rgba(15, 23, 42, 0.85);
-  backdrop-filter: blur(12px);
-  padding: 0.6rem 2rem;
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+  background: rgba(10, 10, 10, 0.9);
+  backdrop-filter: blur(16px);
+  padding: 0.7rem 2.5rem;
+  box-shadow: 0 1px 0 rgba(232, 213, 181, 0.1);
 }
 
 .navbar__logo {
-  font-size: 1.6rem;
-  font-weight: 800;
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  font-weight: 900;
   color: var(--accent);
+  transition: opacity 0.3s;
+}
+
+.navbar__logo:hover {
+  opacity: 0.7;
 }
 
 .navbar__links {
   list-style: none;
   display: flex;
-  gap: 1.5rem;
+  gap: 2rem;
 }
 
 .navbar__links a {
   color: var(--text-muted);
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   transition: color 0.3s;
+  position: relative;
+}
+
+.navbar__links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--accent);
+  transition: width 0.3s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .navbar__links a:hover {
-  color: var(--accent);
+  color: var(--text);
+}
+
+.navbar__links a:hover::after {
+  width: 100%;
 }
 
 .navbar__socials {
   display: flex;
-  gap: 0.8rem;
+  gap: 1rem;
 }
 
 .navbar__social {
