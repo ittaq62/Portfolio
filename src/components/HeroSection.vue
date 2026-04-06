@@ -380,7 +380,7 @@ onMounted(() => {
   max-width: none;
   margin: 0;
   background: var(--bg);
-  cursor: crosshair;
+  cursor: none;
 }
 
 /* Gradient animé */
