@@ -257,8 +257,9 @@ onMounted(() => {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   min-height: 100vh;
-  padding: 6rem 4rem;
+  padding: 6rem 2rem;
   max-width: none;
   margin: 0;
 }
@@ -266,6 +267,9 @@ onMounted(() => {
 /* Header */
 .skills__header {
   margin-bottom: 3.5rem;
+  text-align: center;
+  width: 100%;
+  max-width: 1200px;
 }
 
 .skills__label {
@@ -303,9 +307,17 @@ onMounted(() => {
 /* Grid */
 .skills__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  grid-template-columns: repeat(6, minmax(150px, 1fr));
   gap: 1.2rem;
-  max-width: 1100px;
+  width: 100%;
+  max-width: 1200px;
+  justify-content: center;
+}
+
+@media (max-width: 1100px) {
+  .skills__grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 /* Item */
@@ -418,7 +430,9 @@ onMounted(() => {
 /* Langues */
 .skills__langues {
   margin-top: 3rem;
-  max-width: 500px;
+  text-align: center;
+  width: 100%;
+  max-width: 600px;
 }
 
 .skills__langues-title {
@@ -433,6 +447,7 @@ onMounted(() => {
 .skills__langues-list {
   display: flex;
   gap: 1.5rem;
+  justify-content: center;
 }
 
 .skills__langue {

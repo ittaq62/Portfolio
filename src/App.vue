@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <CustomCursor />
     <ScrollProgress />
     <NavBar />
     <HeroSection />
@@ -13,6 +14,7 @@
 </template>
 
 <script setup>
+import CustomCursor from './components/CustomCursor.vue'
 import ScrollProgress from './components/ScrollProgress.vue'
 import NavBar from './components/NavBar.vue'
 import HeroSection from './components/HeroSection.vue'
