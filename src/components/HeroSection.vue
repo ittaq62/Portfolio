@@ -1,5 +1,8 @@
 <template>
   <section class="hero" ref="heroRef" @mousemove="onMouseMove">
+    <!-- Background artwork anime -->
+    <AnimatedBackground />
+
     <!-- Gradient animé en fond -->
     <div class="hero__gradient"></div>
 
@@ -113,6 +116,7 @@
 <script setup>
 import { ref, reactive, onMounted, computed } from 'vue'
 import { gsap } from 'gsap'
+import AnimatedBackground from './AnimatedBackground.vue'
 
 const heroRef = ref(null)
 const contentRef = ref(null)
