@@ -46,178 +46,56 @@
       <path d="M1280,580 L1300,560 L1320,580 L1310,600 Z" fill="#e8ecf5" opacity="0.4" />
     </svg>
 
-    <!-- Couche 3 : Skyline monuments (voyages) -->
-    <svg class="bg__layer bg__layer--skyline" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice">
-      <g fill="#0a1320" opacity="0.9">
-        <!-- Tour Eiffel (Paris) -->
-        <g transform="translate(280, 700)">
-          <path d="M0,180 L10,80 L-2,80 L-15,180 Z M10,80 L20,30 L0,30 L-2,80 Z M20,30 L25,0 L15,0 L20,30 Z" />
-          <line x1="-15" y1="180" x2="25" y2="180" stroke="#0a1320" stroke-width="3" />
-          <line x1="-8" y1="120" x2="18" y2="120" stroke="#0a1320" stroke-width="2" />
-        </g>
+    <!-- Couche 3 : Monuments (vraies illustrations) -->
+    <div class="bg__layer bg__layer--skyline">
+      <img class="bg__monument bg__monument--eiffel" src="https://api.iconify.design/noto/eiffel-tower.svg" alt="" />
+      <img class="bg__monument bg__monument--bigben" src="https://api.iconify.design/noto/castle.svg" alt="" />
+      <img class="bg__monument bg__monument--colosseum" src="https://api.iconify.design/noto/classical-building.svg" alt="" />
+      <img class="bg__monument bg__monument--parthenon" src="https://api.iconify.design/twemoji/classical-building.svg" alt="" />
+      <img class="bg__monument bg__monument--statue" src="https://api.iconify.design/noto/statue-of-liberty.svg" alt="" />
+      <img class="bg__monument bg__monument--mountfuji" src="https://api.iconify.design/noto/mount-fuji.svg" alt="" />
+    </div>
 
-        <!-- Big Ben (Londres) -->
-        <g transform="translate(550, 750)">
-          <rect x="0" y="40" width="20" height="90" />
-          <rect x="-3" y="20" width="26" height="20" />
-          <polygon points="0,20 10,0 20,20" />
-          <circle cx="10" cy="55" r="6" fill="#e09b6b" opacity="0.6" />
-        </g>
+    <!-- Couche 4 : Sapins premier plan (vraies images) -->
+    <div class="bg__layer bg__layer--trees">
+      <img class="bg__tree bg__tree--1" src="https://api.iconify.design/noto/evergreen-tree.svg" alt="" />
+      <img class="bg__tree bg__tree--2" src="https://api.iconify.design/noto/evergreen-tree.svg" alt="" />
+      <img class="bg__tree bg__tree--3" src="https://api.iconify.design/noto/evergreen-tree.svg" alt="" />
+      <img class="bg__tree bg__tree--4" src="https://api.iconify.design/noto/deciduous-tree.svg" alt="" />
+    </div>
 
-        <!-- Colisee (Rome) -->
-        <g transform="translate(750, 770)">
-          <ellipse cx="40" cy="50" rx="50" ry="15" />
-          <rect x="-5" y="20" width="90" height="40" />
-          <g fill="#0b1220">
-            <rect x="5" y="25" width="6" height="12" />
-            <rect x="18" y="25" width="6" height="12" />
-            <rect x="31" y="25" width="6" height="12" />
-            <rect x="44" y="25" width="6" height="12" />
-            <rect x="57" y="25" width="6" height="12" />
-            <rect x="70" y="25" width="6" height="12" />
-          </g>
-        </g>
-
-        <!-- Parthenon (Athenes) -->
-        <g transform="translate(950, 770)">
-          <polygon points="0,30 50,5 100,30" />
-          <rect x="0" y="30" width="100" height="8" />
-          <line x1="10" y1="38" x2="10" y2="80" stroke="#0a1320" stroke-width="6" />
-          <line x1="30" y1="38" x2="30" y2="80" stroke="#0a1320" stroke-width="6" />
-          <line x1="50" y1="38" x2="50" y2="80" stroke="#0a1320" stroke-width="6" />
-          <line x1="70" y1="38" x2="70" y2="80" stroke="#0a1320" stroke-width="6" />
-          <line x1="90" y1="38" x2="90" y2="80" stroke="#0a1320" stroke-width="6" />
-          <rect x="-5" y="80" width="110" height="8" />
-        </g>
-
-        <!-- Brandebourg (Berlin/Allemagne) -->
-        <g transform="translate(1150, 780)">
-          <rect x="0" y="20" width="80" height="60" />
-          <rect x="-5" y="10" width="90" height="12" />
-          <line x1="15" y1="22" x2="15" y2="80" stroke="#0b1220" stroke-width="4" />
-          <line x1="35" y1="22" x2="35" y2="80" stroke="#0b1220" stroke-width="4" />
-          <line x1="55" y1="22" x2="55" y2="80" stroke="#0b1220" stroke-width="4" />
-          <line x1="75" y1="22" x2="75" y2="80" stroke="#0b1220" stroke-width="4" />
-        </g>
-
-        <!-- Tour de l horloge (Suisse) -->
-        <g transform="translate(1320, 800)">
-          <polygon points="0,30 15,0 30,30" />
-          <rect x="5" y="30" width="20" height="40" />
-          <circle cx="15" cy="45" r="5" fill="#e09b6b" opacity="0.6" />
-        </g>
-
-        <!-- Tour pisa (Italie) -->
-        <g transform="translate(1450, 790)">
-          <g transform="rotate(-8)">
-            <rect x="0" y="0" width="18" height="60" />
-            <line x1="0" y1="15" x2="18" y2="15" stroke="#0b1220" stroke-width="1" />
-            <line x1="0" y1="30" x2="18" y2="30" stroke="#0b1220" stroke-width="1" />
-            <line x1="0" y1="45" x2="18" y2="45" stroke="#0b1220" stroke-width="1" />
-          </g>
-        </g>
-      </g>
-    </svg>
-
-    <!-- Couche 4 : Sapins premier plan -->
-    <svg class="bg__layer bg__layer--trees" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice">
-      <g fill="#060a14">
-        <!-- Sapin gauche -->
-        <g transform="translate(50, 850)">
-          <polygon points="0,0 -25,40 25,40" />
-          <polygon points="0,30 -30,80 30,80" />
-          <polygon points="0,70 -35,130 35,130" />
-          <rect x="-5" y="125" width="10" height="20" />
-        </g>
-        <!-- Sapin moyen -->
-        <g transform="translate(180, 870)">
-          <polygon points="0,0 -20,30 20,30" />
-          <polygon points="0,25 -25,65 25,65" />
-          <polygon points="0,60 -30,110 30,110" />
-          <rect x="-4" y="105" width="8" height="15" />
-        </g>
-        <!-- Sapin droite -->
-        <g transform="translate(1850, 880)">
-          <polygon points="0,0 -22,35 22,35" />
-          <polygon points="0,28 -28,75 28,75" />
-          <polygon points="0,65 -33,120 33,120" />
-          <rect x="-4" y="115" width="8" height="18" />
-        </g>
-        <g transform="translate(1750, 900)">
-          <polygon points="0,0 -18,28 18,28" />
-          <polygon points="0,22 -23,60 23,60" />
-          <polygon points="0,55 -28,100 28,100" />
-          <rect x="-3" y="95" width="6" height="14" />
-        </g>
-      </g>
-    </svg>
-
-    <!-- Couche 5 : Elements flottants (passions) -->
-    <svg class="bg__layer bg__layer--floating" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice">
-      <!-- Atome EDF -->
-      <g class="bg__float bg__float--atom" transform="translate(150, 250)">
+    <!-- Couche 5 : Elements flottants (passions - vraies images Noto) -->
+    <div class="bg__layer bg__layer--floating">
+      <!-- Atome EDF (garde le SVG geometrique car il marche bien) -->
+      <svg class="bg__float bg__float--atom" viewBox="-30 -30 60 60">
         <circle cx="0" cy="0" r="3" fill="#e09b6b" />
         <ellipse cx="0" cy="0" rx="22" ry="9" fill="none" stroke="#e09b6b" stroke-width="1" opacity="0.6" />
         <ellipse cx="0" cy="0" rx="22" ry="9" fill="none" stroke="#e09b6b" stroke-width="1" opacity="0.6" transform="rotate(60)" />
         <ellipse cx="0" cy="0" rx="22" ry="9" fill="none" stroke="#e09b6b" stroke-width="1" opacity="0.6" transform="rotate(-60)" />
-      </g>
+      </svg>
 
       <!-- Manette de jeu -->
-      <g class="bg__float bg__float--controller" transform="translate(1700, 350)">
-        <g fill="none" stroke="#e09b6b" stroke-width="1.5" opacity="0.55">
-          <path d="M-25,-5 Q-30,0 -25,8 L-15,12 L15,12 L25,8 Q30,0 25,-5 L15,-8 L-15,-8 Z" />
-          <circle cx="-15" cy="0" r="2" fill="#e09b6b" />
-          <circle cx="-15" cy="0" r="5" />
-          <line x1="-18" y1="0" x2="-12" y2="0" />
-          <line x1="-15" y1="-3" x2="-15" y2="3" />
-          <circle cx="13" cy="-2" r="1.5" fill="#e09b6b" />
-          <circle cx="17" cy="2" r="1.5" fill="#e09b6b" />
-        </g>
-      </g>
+      <img class="bg__float bg__float--controller" src="https://api.iconify.design/noto/video-game.svg" alt="" />
 
       <!-- Casque audio -->
-      <g class="bg__float bg__float--headphones" transform="translate(1400, 200)">
-        <g fill="none" stroke="#e09b6b" stroke-width="1.5" opacity="0.5">
-          <path d="M-18,5 Q-18,-15 0,-15 Q18,-15 18,5" />
-          <rect x="-22" y="3" width="8" height="14" rx="2" fill="#e09b6b" opacity="0.3" />
-          <rect x="14" y="3" width="8" height="14" rx="2" fill="#e09b6b" opacity="0.3" />
-        </g>
-      </g>
+      <img class="bg__float bg__float--headphones" src="https://api.iconify.design/noto/headphone.svg" alt="" />
 
       <!-- Notes de musique -->
-      <g class="bg__float bg__float--note1" transform="translate(250, 400)">
-        <g fill="#e09b6b" opacity="0.5">
-          <circle cx="0" cy="8" r="3" />
-          <rect x="2.5" y="-8" width="1" height="16" />
-          <path d="M3.5,-8 Q10,-6 8,2 Q6,-3 3.5,-2 Z" />
-        </g>
-      </g>
-      <g class="bg__float bg__float--note2" transform="translate(1600, 600)">
-        <g fill="#e09b6b" opacity="0.4">
-          <circle cx="0" cy="8" r="2.5" />
-          <rect x="2" y="-7" width="1" height="15" />
-          <path d="M3,-7 Q9,-5 7,2 Q5,-2 3,-1 Z" />
-        </g>
-      </g>
-
-      <!-- Code brackets -->
-      <g class="bg__float bg__float--code" transform="translate(120, 600)">
-        <text x="0" y="0" font-family="monospace" font-size="22" fill="#e09b6b" opacity="0.4">{ }</text>
-      </g>
-      <g class="bg__float bg__float--code2" transform="translate(1750, 750)">
-        <text x="0" y="0" font-family="monospace" font-size="18" fill="#e09b6b" opacity="0.35">&lt;/&gt;</text>
-      </g>
+      <img class="bg__float bg__float--note1" src="https://api.iconify.design/noto/musical-note.svg" alt="" />
+      <img class="bg__float bg__float--note2" src="https://api.iconify.design/noto/multiple-musical-notes.svg" alt="" />
 
       <!-- Avion (voyage) -->
-      <g class="bg__float bg__float--plane" transform="translate(800, 150)">
-        <path d="M0,0 L20,-3 L25,-1 L20,3 L0,0 L-15,-8 L-12,0 L-15,8 Z" fill="#e09b6b" opacity="0.4" />
-      </g>
+      <img class="bg__float bg__float--plane" src="https://api.iconify.design/noto/airplane.svg" alt="" />
 
       <!-- Feuille (environnement) -->
-      <g class="bg__float bg__float--leaf" transform="translate(450, 750)">
-        <path d="M0,0 Q-8,-15 0,-25 Q8,-15 0,0 Z M0,-12 L0,-2" fill="none" stroke="#7cb87c" stroke-width="1.2" opacity="0.5" />
-      </g>
-    </svg>
+      <img class="bg__float bg__float--leaf" src="https://api.iconify.design/noto/herb.svg" alt="" />
+
+      <!-- Globe (voyage) -->
+      <img class="bg__float bg__float--globe" src="https://api.iconify.design/noto/globe-showing-europe-africa.svg" alt="" />
+
+      <!-- Laptop (dev) -->
+      <img class="bg__float bg__float--laptop" src="https://api.iconify.design/noto/laptop.svg" alt="" />
+    </div>
 
     <!-- Brouillard/voile au sol -->
     <div class="bg__fog"></div>
@@ -304,9 +182,9 @@ onMounted(() => {
     { sel: '.bg__float--headphones', y: 12, dur: 4 },
     { sel: '.bg__float--note1', y: 20, dur: 6 },
     { sel: '.bg__float--note2', y: 18, dur: 5.5 },
-    { sel: '.bg__float--code', y: 10, dur: 4.5 },
-    { sel: '.bg__float--code2', y: 14, dur: 5 },
-    { sel: '.bg__float--leaf', y: 8, dur: 4 }
+    { sel: '.bg__float--leaf', y: 8, dur: 4 },
+    { sel: '.bg__float--globe', y: 10, dur: 6.5 },
+    { sel: '.bg__float--laptop', y: 12, dur: 5 }
   ]
 
   floats.forEach(({ sel, y, dur }) => {
@@ -319,27 +197,28 @@ onMounted(() => {
     })
   })
 
+  // Globe qui tourne legerement
+  gsap.to('.bg__float--globe', {
+    rotation: 15,
+    duration: 8,
+    repeat: -1,
+    yoyo: true,
+    ease: 'sine.inOut',
+    transformOrigin: 'center'
+  })
+
   // Avion qui traverse
   const planeLoop = () => {
     gsap.fromTo('.bg__float--plane', {
       x: -200
     }, {
       x: 2200,
-      duration: 25,
+      duration: 30,
       ease: 'none',
       onComplete: planeLoop
     })
   }
   planeLoop()
-
-  // Notes qui montent
-  gsap.to('.bg__float--note1', {
-    y: -30,
-    opacity: 0,
-    duration: 8,
-    repeat: -1,
-    ease: 'sine.out'
-  })
 })
 
 onUnmounted(() => {
@@ -401,5 +280,183 @@ onUnmounted(() => {
 
 .bg__float {
   will-change: transform;
+  position: absolute;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4));
+}
+
+/* Positions des elements flottants */
+.bg__float--atom {
+  top: 23%;
+  left: 8%;
+  width: 60px;
+  height: 60px;
+  opacity: 0.7;
+}
+
+.bg__float--controller {
+  top: 30%;
+  right: 8%;
+  width: 70px;
+  height: 70px;
+  opacity: 0.85;
+}
+
+.bg__float--headphones {
+  top: 8%;
+  right: 32%;
+  width: 65px;
+  height: 65px;
+  opacity: 0.8;
+}
+
+.bg__float--note1 {
+  top: 38%;
+  left: 12%;
+  width: 45px;
+  height: 45px;
+  opacity: 0.75;
+}
+
+.bg__float--note2 {
+  top: 55%;
+  right: 18%;
+  width: 50px;
+  height: 50px;
+  opacity: 0.75;
+}
+
+.bg__float--plane {
+  top: 14%;
+  left: 0;
+  width: 80px;
+  height: 80px;
+  opacity: 0.85;
+}
+
+.bg__float--leaf {
+  bottom: 28%;
+  left: 22%;
+  width: 50px;
+  height: 50px;
+  opacity: 0.7;
+}
+
+.bg__float--globe {
+  top: 60%;
+  left: 6%;
+  width: 70px;
+  height: 70px;
+  opacity: 0.7;
+}
+
+.bg__float--laptop {
+  bottom: 25%;
+  right: 10%;
+  width: 65px;
+  height: 65px;
+  opacity: 0.75;
+}
+
+/* Monuments */
+.bg__monument {
+  position: absolute;
+  filter: drop-shadow(0 6px 20px rgba(0, 0, 0, 0.5));
+  opacity: 0.85;
+}
+
+.bg__monument--eiffel {
+  bottom: 12%;
+  left: 14%;
+  width: 90px;
+  height: 90px;
+}
+
+.bg__monument--bigben {
+  bottom: 13%;
+  left: 28%;
+  width: 75px;
+  height: 75px;
+}
+
+.bg__monument--colosseum {
+  bottom: 10%;
+  left: 42%;
+  width: 95px;
+  height: 95px;
+}
+
+.bg__monument--parthenon {
+  bottom: 12%;
+  left: 58%;
+  width: 85px;
+  height: 85px;
+}
+
+.bg__monument--statue {
+  bottom: 15%;
+  left: 72%;
+  width: 80px;
+  height: 80px;
+}
+
+.bg__monument--mountfuji {
+  bottom: 11%;
+  right: 8%;
+  width: 100px;
+  height: 100px;
+}
+
+/* Sapins */
+.bg__tree {
+  position: absolute;
+  filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.6));
+}
+
+.bg__tree--1 {
+  bottom: 4%;
+  left: 2%;
+  width: 110px;
+  height: 110px;
+}
+
+.bg__tree--2 {
+  bottom: 6%;
+  left: 8%;
+  width: 80px;
+  height: 80px;
+}
+
+.bg__tree--3 {
+  bottom: 4%;
+  right: 3%;
+  width: 100px;
+  height: 100px;
+}
+
+.bg__tree--4 {
+  bottom: 7%;
+  right: 10%;
+  width: 75px;
+  height: 75px;
+}
+
+@media (max-width: 768px) {
+  .bg__monument,
+  .bg__float--leaf,
+  .bg__float--globe,
+  .bg__float--laptop,
+  .bg__float--note2 {
+    display: none;
+  }
+
+  .bg__float {
+    width: 40px !important;
+    height: 40px !important;
+  }
+
+  .bg__tree {
+    width: 60px !important;
+    height: 60px !important;
+  }
 }
 </style>
