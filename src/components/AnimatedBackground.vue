@@ -48,7 +48,7 @@
 
     <!-- Couche 3 : Monuments (vraies illustrations) -->
     <div class="bg__layer bg__layer--skyline">
-      <img class="bg__monument bg__monument--eiffel" src="https://api.iconify.design/noto/eiffel-tower.svg" alt="" />
+      <img class="bg__monument bg__monument--eiffel" src="https://api.iconify.design/mdi/eiffel-tower.svg?color=%23e8ecf5" alt="" />
       <img class="bg__monument bg__monument--bigben" src="https://api.iconify.design/noto/castle.svg" alt="" />
       <img class="bg__monument bg__monument--colosseum" src="https://api.iconify.design/noto/classical-building.svg" alt="" />
       <img class="bg__monument bg__monument--parthenon" src="https://api.iconify.design/twemoji/classical-building.svg" alt="" />
@@ -82,10 +82,12 @@
 
       <!-- Notes de musique -->
       <img class="bg__float bg__float--note1" src="https://api.iconify.design/noto/musical-note.svg" alt="" />
-      <img class="bg__float bg__float--note2" src="https://api.iconify.design/noto/multiple-musical-notes.svg" alt="" />
+      <img class="bg__float bg__float--note2" src="https://api.iconify.design/noto/musical-notes.svg" alt="" />
 
       <!-- Avion (voyage) -->
-      <img class="bg__float bg__float--plane" src="https://api.iconify.design/noto/airplane.svg" alt="" />
+      <div class="bg__float bg__float--plane">
+        <img src="https://api.iconify.design/noto/airplane.svg" alt="" />
+      </div>
 
       <!-- Feuille (environnement) -->
       <img class="bg__float bg__float--leaf" src="https://api.iconify.design/noto/herb.svg" alt="" />
@@ -331,6 +333,12 @@ onUnmounted(() => {
   width: 80px;
   height: 80px;
   opacity: 0.85;
+}
+
+.bg__float--plane img {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-45deg);
 }
 
 .bg__float--leaf {
