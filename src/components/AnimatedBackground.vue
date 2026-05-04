@@ -338,7 +338,7 @@ onUnmounted(() => {
 .bg__float--plane img {
   width: 100%;
   height: 100%;
-  transform: rotate(-45deg);
+  transform: rotate(45deg);
 }
 
 .bg__float--leaf {

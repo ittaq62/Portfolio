@@ -8,7 +8,7 @@
         <span class="contact__title-line contact__title-line--accent" ref="titleLine2">PROJET</span>
       </h2>
       <p class="contact__subtitle" ref="subtitleRef">
-        Une opportunite d'alternance, un projet en tete, ou juste envie d'echanger ?
+        Une opportunité d'alternance, un projet en tête, ou juste envie d'échanger ?
       </p>
     </div>
 
@@ -244,20 +244,21 @@ onMounted(() => {
 .contact__title {
   font-family: var(--font-serif);
   font-weight: 900;
-  line-height: 0.9;
+  line-height: 1.05;
   margin: 0 0 1.2rem;
   display: flex;
   align-items: baseline;
   gap: 0.4em;
   flex-wrap: wrap;
+  padding-right: 0.3em;
 }
 
 .contact__title-line {
-  display: block;
+  display: inline-block;
   font-size: clamp(2.5rem, 5vw, 4.5rem);
   color: var(--text);
   letter-spacing: -0.02em;
-  overflow: hidden;
+  padding: 0.05em 0.1em 0.05em 0;
   will-change: clip-path;
 }
 
