@@ -142,7 +142,7 @@ const transitionLabel = ref(null)
 const transitionLine = ref(null)
 const isTransitioning = ref(false)
 
-const roleText = 'DEVELOPPEUR FULL-STACK'
+const roleText = 'DÉVELOPPEUR FULL-STACK'
 const roleChars = roleText.split('')
 
 const mouse = reactive({ x: 0, y: 0 })
@@ -170,9 +170,9 @@ const onMouseMove = (e) => {
 }
 
 const hotspots = [
-  { id: 'about', label: 'A propos', position: 'top-left' },
-  { id: 'skills', label: 'Competences', position: 'top-right' },
-  { id: 'experience', label: 'Experience', position: 'bottom-left' },
+  { id: 'about', label: 'À propos', position: 'top-left' },
+  { id: 'skills', label: 'Compétences', position: 'top-right' },
+  { id: 'experience', label: 'Expérience', position: 'bottom-left' },
   { id: 'projets', label: 'Projets', position: 'bottom-right' },
   { id: 'contact', label: 'Contact', position: 'center-right' }
 ]

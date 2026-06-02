@@ -2,12 +2,12 @@
   <section id="projets" class="projects" ref="sectionRef">
     <!-- Header -->
     <div class="projects__header" ref="headerRef">
-      <span class="projects__label">Realisations</span>
+      <span class="projects__label">Réalisations</span>
       <h2 class="projects__title">
         <span class="projects__title-line" ref="titleLine1">MES</span>
         <span class="projects__title-line projects__title-line--accent" ref="titleLine2">PROJETS</span>
       </h2>
-      <p class="projects__subtitle">Une selection de projets perso, scolaires et professionnels</p>
+      <p class="projects__subtitle">Une sélection de projets perso, scolaires et professionnels</p>
     </div>
 
     <!-- Filtres -->
@@ -101,7 +101,7 @@ const categories = ['Tous', 'Web', 'Game Dev', 'VR', '3D']
 const projects = [
   {
     title: 'APPESSAIS',
-    description: 'Application PowerApps developpee pour EDF permettant aux equipes de suivre l\'avancement des tests de requalification des equipements de la centrale nucleaire de Gravelines. Tableaux de bord Power BI integres.',
+    description: 'Application PowerApps développée pour EDF permettant aux équipes de suivre l\'avancement des tests de requalification des équipements de la centrale nucléaire de Gravelines. Tableaux de bord Power BI intégrés.',
     techs: ['PowerApps', 'Power Automate', 'Power BI', 'SharePoint'],
     icon: '⚡',
     category: 'Web',
@@ -110,7 +110,7 @@ const projects = [
   },
   {
     title: 'CS2 Case Tracker',
-    description: 'Tracker d\'ouvertures de caisses CS2 avec roue de tirage, statistiques et recuperation des prix Steam Market via Google Sheets.',
+    description: 'Tracker d\'ouvertures de caisses CS2 avec roue de tirage, statistiques et récupération des prix Steam Market via Google Sheets.',
     techs: ['Vue.js', 'PHP', 'Docker', 'Google Sheets API'],
     icon: '🎮',
     category: 'Web',
@@ -118,8 +118,8 @@ const projects = [
     demo: null
   },
   {
-    title: 'Application cimetiere',
-    description: 'Application web deployee sur borne interactive pour la gestion du cimetiere de Longuenesse. Developpement de l\'interface graphique (projet BTS).',
+    title: 'Application cimetière',
+    description: 'Application web déployée sur borne interactive pour la gestion du cimetière de Longuenesse. Développement de l\'interface graphique (projet BTS).',
     techs: ['Vue.js', 'JavaScript', 'HTML', 'CSS'],
     icon: '🌐',
     category: 'Web',
@@ -128,7 +128,7 @@ const projects = [
   },
   {
     title: 'Antique War',
-    description: 'Jeu RTS en Python/Pygame avec theme egyptien. Architecture ECS, 3 types d\'unites avec IA, pathfinding A*, audio procedural.',
+    description: 'Jeu RTS en Python/Pygame avec thème égyptien. Architecture ECS, 3 types d\'unités avec IA, pathfinding A*, audio procédural.',
     techs: ['Python', 'Pygame', 'ECS', 'esper'],
     icon: '🏛️',
     category: 'Game Dev',
@@ -137,7 +137,7 @@ const projects = [
   },
   {
     title: 'BioEchecVR',
-    description: 'Puzzle game en realite virtuelle sous Unreal Engine 5. Menu interactif VR, interactions manettes, mecaniques de portes avec carte d\'acces.',
+    description: 'Puzzle game en réalité virtuelle sous Unreal Engine 5. Menu interactif VR, interactions manettes, mécaniques de portes avec carte d\'accès.',
     techs: ['Unreal Engine 5', 'Blueprint', 'VR', 'C++'],
     icon: '🥽',
     category: 'VR',
@@ -146,7 +146,7 @@ const projects = [
   },
   {
     title: 'Ray Tracing Engine',
-    description: 'Moteur de ray tracing en C++ : Moller-Trumbore, antialiasing, materiaux diffus et parallelisation OpenMP.',
+    description: 'Moteur de ray tracing en C++ : Möller-Trumbore, antialiasing, matériaux diffus et parallélisation OpenMP.',
     techs: ['C++', 'OpenMP', 'Maths 3D'],
     icon: '🔮',
     category: '3D',
@@ -154,8 +154,8 @@ const projects = [
     demo: null
   },
   {
-    title: 'Modelisation 3D',
-    description: 'Creations en Blender : bougies avec textures de cire realistes, bouteille de champagne, meubles (chaises, tables) avec materiaux bois.',
+    title: 'Modélisation 3D',
+    description: 'Créations en Blender : bougies avec textures de cire réalistes, bouteille de champagne, meubles (chaises, tables) avec matériaux bois.',
     techs: ['Blender', '3D', 'Texturing'],
     icon: '🕯️',
     category: '3D',

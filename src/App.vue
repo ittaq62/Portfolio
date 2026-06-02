@@ -8,7 +8,7 @@
     <AboutSection />
 
     <MarqueeBand
-      :items="['DEVELOPPEUR FULL-STACK', 'CREATIF', 'PASSIONNE', 'CURIEUX', 'AUTONOME']"
+      :items="['DÉVELOPPEUR FULL-STACK', 'CRÉATIF', 'PASSIONNÉ', 'CURIEUX', 'AUTONOME']"
       accent
     />
 
