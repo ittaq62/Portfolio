@@ -67,7 +67,7 @@
           <input
             type="text"
             id="name"
-            name="from_name"
+            name="name"
             v-model="form.name"
             required
             :disabled="isSending"
@@ -79,7 +79,7 @@
           <input
             type="email"
             id="email"
-            name="reply_to"
+            name="email"
             v-model="form.email"
             required
             :disabled="isSending"
@@ -222,9 +222,11 @@ const handleSubmit = async () => {
       EMAILJS_SERVICE_ID,
       EMAILJS_TEMPLATE_ID,
       {
-        from_name: form.value.name,
-        reply_to: form.value.email,
-        message: form.value.message
+        name: form.value.name,
+        email: form.value.email,
+        message: form.value.message,
+        title: 'Nouveau message portfolio',
+        time: new Date().toLocaleString('fr-FR')
       },
       { publicKey: EMAILJS_PUBLIC_KEY }
     )
