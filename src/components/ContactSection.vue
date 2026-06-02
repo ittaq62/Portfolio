@@ -14,7 +14,7 @@
 
     <!-- CTA Email Geant -->
     <a href="mailto:quentindouilly1@gmail.com" class="contact__cta" ref="ctaRef">
-      <span class="contact__cta-label">Ecrivez-moi a</span>
+      <span class="contact__cta-label">Écrivez-moi à</span>
       <span class="contact__cta-email">
         <span class="contact__cta-email-text">quentindouilly1@gmail.com</span>
         <svg class="contact__cta-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -53,25 +53,66 @@
           <h3 class="contact__form-title">Envoyez un message</h3>
         </div>
 
+        <!-- Honeypot anti-spam (caché) -->
+        <input
+          type="text"
+          name="website"
+          v-model="form.website"
+          class="form__honeypot"
+          tabindex="-1"
+          autocomplete="off"
+        />
+
         <div class="form__group" :class="{ 'form__group--filled': form.name }">
-          <input type="text" id="name" v-model="form.name" required />
+          <input
+            type="text"
+            id="name"
+            name="from_name"
+            v-model="form.name"
+            required
+            :disabled="isSending"
+          />
           <label for="name">Votre nom</label>
         </div>
 
         <div class="form__group" :class="{ 'form__group--filled': form.email }">
-          <input type="email" id="email" v-model="form.email" required />
+          <input
+            type="email"
+            id="email"
+            name="reply_to"
+            v-model="form.email"
+            required
+            :disabled="isSending"
+          />
           <label for="email">Votre email</label>
         </div>
 
         <div class="form__group" :class="{ 'form__group--filled': form.message }">
-          <textarea id="message" v-model="form.message" rows="4" required></textarea>
+          <textarea
+            id="message"
+            name="message"
+            v-model="form.message"
+            rows="4"
+            required
+            :disabled="isSending"
+          ></textarea>
           <label for="message">Votre message</label>
         </div>
 
-        <button type="submit" class="form__submit" :class="{ sent: isSent }">
-          <span class="form__submit-text">{{ isSent ? 'Message envoye !' : 'Envoyer' }}</span>
-          <svg class="form__submit-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <!-- Status message -->
+        <div v-if="statusMessage" class="form__status" :class="{ 'form__status--error': hasError, 'form__status--success': isSent }">
+          {{ statusMessage }}
+        </div>
+
+        <button type="submit" class="form__submit" :class="{ sent: isSent, sending: isSending, error: hasError }" :disabled="isSending">
+          <span class="form__submit-text">
+            {{ isSending ? 'Envoi en cours...' : isSent ? 'Message envoyé !' : hasError ? 'Réessayer' : 'Envoyer' }}
+          </span>
+          <svg v-if="!isSending" class="form__submit-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path :d="isSent ? 'M20 6L9 17l-5-5' : 'M5 12h14M12 5l7 7-7 7'"/>
+          </svg>
+          <svg v-else class="form__submit-spinner" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M12 2a10 10 0 0 1 10 10" stroke-linecap="round"/>
           </svg>
         </button>
       </form>
@@ -81,10 +122,12 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
+import emailjs from '@emailjs/browser'
 import { useScrollAnimation } from '../composables/useScrollAnimation'
 
 const { gsap } = useScrollAnimation()
 
+// Refs
 const sectionRef = ref(null)
 const headerRef = ref(null)
 const titleLine1 = ref(null)
@@ -94,13 +137,25 @@ const ctaRef = ref(null)
 const cardsRef = ref(null)
 const cardRefs = ref([])
 const formEl = ref(null)
+
+// State
 const isSent = ref(false)
+const isSending = ref(false)
+const hasError = ref(false)
+const statusMessage = ref('')
+const lastSubmitTime = ref(0)
 
 const form = ref({
   name: '',
   email: '',
-  message: ''
+  message: '',
+  website: '' // honeypot
 })
+
+// EmailJS config (depuis variables d'environnement)
+const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID || ''
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || ''
+const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || ''
 
 const contactItems = [
   {
@@ -118,7 +173,7 @@ const contactItems = [
     icon: '<svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>'
   },
   {
-    label: 'Telephone',
+    label: 'Téléphone',
     value: '07.83.98.91.57',
     link: 'tel:0783989157',
     external: false,
@@ -133,12 +188,68 @@ const contactItems = [
   }
 ]
 
-const handleSubmit = () => {
-  isSent.value = true
-  setTimeout(() => {
-    isSent.value = false
-    form.value = { name: '', email: '', message: '' }
-  }, 3000)
+const handleSubmit = async () => {
+  // Anti-spam : honeypot
+  if (form.value.website) {
+    return
+  }
+
+  // Anti-spam : rate limit (1 message par 30 secondes)
+  const now = Date.now()
+  if (now - lastSubmitTime.value < 30000) {
+    hasError.value = true
+    statusMessage.value = 'Attendez quelques secondes avant de renvoyer un message.'
+    setTimeout(() => {
+      hasError.value = false
+      statusMessage.value = ''
+    }, 4000)
+    return
+  }
+
+  // Vérification config
+  if (!EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID || !EMAILJS_PUBLIC_KEY) {
+    hasError.value = true
+    statusMessage.value = 'Configuration manquante. Utilisez directement l\'email ci-dessus.'
+    return
+  }
+
+  isSending.value = true
+  hasError.value = false
+  statusMessage.value = ''
+
+  try {
+    await emailjs.send(
+      EMAILJS_SERVICE_ID,
+      EMAILJS_TEMPLATE_ID,
+      {
+        from_name: form.value.name,
+        reply_to: form.value.email,
+        message: form.value.message
+      },
+      { publicKey: EMAILJS_PUBLIC_KEY }
+    )
+
+    isSent.value = true
+    statusMessage.value = 'Merci ! Votre message a bien été envoyé.'
+    lastSubmitTime.value = now
+
+    // Reset après 4s
+    setTimeout(() => {
+      isSent.value = false
+      statusMessage.value = ''
+      form.value = { name: '', email: '', message: '', website: '' }
+    }, 4000)
+  } catch (error) {
+    console.error('Erreur EmailJS:', error)
+    hasError.value = true
+    statusMessage.value = 'Erreur lors de l\'envoi. Réessayez ou contactez-moi directement par email.'
+    setTimeout(() => {
+      hasError.value = false
+      statusMessage.value = ''
+    }, 5000)
+  } finally {
+    isSending.value = false
+  }
 }
 
 onMounted(() => {
@@ -146,7 +257,8 @@ onMounted(() => {
   const tl = gsap.timeline({
     scrollTrigger: {
       trigger: headerRef.value,
-      start: 'top 80%'
+      start: 'top 80%',
+      toggleActions: 'play none none none'
     }
   })
 
@@ -168,52 +280,70 @@ onMounted(() => {
     duration: 1,
     ease: 'power4.out'
   }, '-=0.7')
-  .from(subtitleRef.value, {
+  .fromTo(subtitleRef.value, {
     y: 30,
-    opacity: 0,
+    opacity: 0
+  }, {
+    y: 0,
+    opacity: 1,
     duration: 0.6,
     ease: 'power2.out'
   }, '-=0.4')
 
   // CTA email reveal
-  gsap.from(ctaRef.value, {
+  gsap.fromTo(ctaRef.value, {
     scaleX: 0.9,
     opacity: 0,
-    y: 30,
+    y: 30
+  }, {
+    scaleX: 1,
+    opacity: 1,
+    y: 0,
     duration: 1.2,
     ease: 'power4.out',
     transformOrigin: 'left center',
     scrollTrigger: {
       trigger: ctaRef.value,
-      start: 'top 85%'
+      start: 'top 90%',
+      toggleActions: 'play none none none'
     }
   })
 
-  // Cards stagger
-  gsap.from('.contact__card', {
+  // Cards stagger (fromTo pour eviter le bug opacity 0 bloque)
+  gsap.fromTo('.contact__card', {
     x: -50,
-    opacity: 0,
+    opacity: 0
+  }, {
+    x: 0,
+    opacity: 1,
     duration: 0.7,
     stagger: 0.1,
     ease: 'power3.out',
     scrollTrigger: {
       trigger: cardsRef.value,
-      start: 'top 85%'
+      start: 'top 90%',
+      toggleActions: 'play none none none'
     }
   })
 
   // Form
-  gsap.from(formEl.value.children, {
-    y: 40,
-    opacity: 0,
-    duration: 0.6,
-    stagger: 0.1,
-    ease: 'power3.out',
-    scrollTrigger: {
-      trigger: formEl.value,
-      start: 'top 85%'
-    }
-  })
+  if (formEl.value) {
+    gsap.fromTo(formEl.value.children, {
+      y: 40,
+      opacity: 0
+    }, {
+      y: 0,
+      opacity: 1,
+      duration: 0.6,
+      stagger: 0.1,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: formEl.value,
+        start: 'top 90%',
+        toggleActions: 'play none none none'
+      }
+    })
+  }
 })
 </script>
 
@@ -288,6 +418,7 @@ onMounted(() => {
   border-top: 1px solid rgba(232, 213, 181, 0.1);
   border-bottom: 1px solid rgba(232, 213, 181, 0.1);
   transition: padding 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  min-width: 0;
 }
 
 .contact__cta:hover {
@@ -308,12 +439,14 @@ onMounted(() => {
   justify-content: space-between;
   gap: 1rem;
   font-family: var(--font-serif);
-  font-size: clamp(1.5rem, 4.5vw, 4rem);
+  /* Taille reduite pour responsive */
+  font-size: clamp(1.4rem, 3.5vw, 3rem);
   font-weight: 700;
   font-style: italic;
   color: var(--text);
   letter-spacing: -0.02em;
-  line-height: 1;
+  line-height: 1.1;
+  min-width: 0;
 }
 
 .contact__cta-email-text {
@@ -324,6 +457,9 @@ onMounted(() => {
   -webkit-text-fill-color: transparent;
   background-clip: text;
   transition: background-position 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+  word-break: break-all;
+  flex: 1 1 auto;
+  min-width: 0;
 }
 
 .contact__cta:hover .contact__cta-email-text {
@@ -331,8 +467,8 @@ onMounted(() => {
 }
 
 .contact__cta-arrow {
-  width: 2.5rem;
-  height: 2.5rem;
+  width: clamp(1.5rem, 2vw, 2.5rem);
+  height: clamp(1.5rem, 2vw, 2.5rem);
   color: var(--accent);
   flex-shrink: 0;
   transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
@@ -475,6 +611,17 @@ onMounted(() => {
   letter-spacing: -0.01em;
 }
 
+/* Honeypot - invisible pour les humains */
+.form__honeypot {
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+  opacity: 0;
+  pointer-events: none;
+  width: 1px;
+  height: 1px;
+}
+
 /* Floating label form group */
 .form__group {
   position: relative;
@@ -497,6 +644,12 @@ onMounted(() => {
 
 .form__group textarea {
   min-height: 100px;
+}
+
+.form__group input:disabled,
+.form__group textarea:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .form__group label {
@@ -527,6 +680,29 @@ onMounted(() => {
   color: var(--accent);
 }
 
+/* Status messages */
+.form__status {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  background: rgba(232, 213, 181, 0.08);
+  border: 1px solid rgba(232, 213, 181, 0.15);
+  color: var(--text);
+}
+
+.form__status--success {
+  background: rgba(45, 186, 110, 0.1);
+  border-color: rgba(45, 186, 110, 0.3);
+  color: #5dd398;
+}
+
+.form__status--error {
+  background: rgba(220, 50, 50, 0.1);
+  border-color: rgba(220, 50, 50, 0.3);
+  color: #ff7070;
+}
+
 /* Submit */
 .form__submit {
   position: relative;
@@ -550,6 +726,11 @@ onMounted(() => {
   overflow: hidden;
 }
 
+.form__submit:disabled {
+  cursor: wait;
+  opacity: 0.8;
+}
+
 .form__submit::before {
   content: '';
   position: absolute;
@@ -559,11 +740,11 @@ onMounted(() => {
   transition: transform 0.6s;
 }
 
-.form__submit:hover::before {
+.form__submit:hover:not(:disabled)::before {
   transform: translateX(100%);
 }
 
-.form__submit:hover {
+.form__submit:hover:not(:disabled) {
   transform: translateY(-2px);
   box-shadow: 0 12px 30px rgba(232, 213, 181, 0.25);
 }
@@ -574,13 +755,30 @@ onMounted(() => {
   transition: transform 0.3s;
 }
 
-.form__submit:hover .form__submit-arrow {
+.form__submit:hover:not(:disabled) .form__submit-arrow {
   transform: translateX(4px);
 }
 
 .form__submit.sent {
   background: #2dba6e;
   color: white;
+}
+
+.form__submit.error {
+  background: #dc3232;
+  color: white;
+}
+
+.form__submit-spinner {
+  width: 1.1rem;
+  height: 1.1rem;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* Responsive */
@@ -600,9 +798,20 @@ onMounted(() => {
     padding: 1.8rem;
   }
 
+  .contact__cta-email {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
   .contact__cta-arrow {
-    width: 1.8rem;
-    height: 1.8rem;
+    align-self: flex-end;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact__cta-email {
+    font-size: clamp(1.2rem, 5vw, 1.8rem);
   }
 }
 </style>
