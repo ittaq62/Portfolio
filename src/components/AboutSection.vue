@@ -2,9 +2,9 @@
   <section id="about" class="about" ref="sectionRef">
     <!-- Header -->
     <div class="about__header" ref="headerRef">
-      <span class="about__label">A propos</span>
+      <span class="about__label">À propos</span>
       <h2 class="about__title">
-        <span class="about__title-line" ref="titleLine1">A</span>
+        <span class="about__title-line" ref="titleLine1">À</span>
         <span class="about__title-line about__title-line--accent" ref="titleLine2">PROPOS</span>
       </h2>
     </div>
@@ -13,14 +13,14 @@
       <!-- Texte principal -->
       <div class="about__text" ref="textRef">
         <p class="about__intro">
-          <span ref="introWord">Developpeur</span> de 22 ans en 3eme annee de BUT Informatique a l'IUT de Calais,
-          parcours <span class="about__highlight">Conception et Developpement d'Applications</span>.
+          <span ref="introWord">Développeur</span> de 22 ans en 3ème année de BUT Informatique à l'IUT de Calais,
+          parcours <span class="about__highlight">Conception et Développement d'Applications</span>.
           En alternance chez <span class="about__highlight">EDF</span> au CNPE de Gravelines,
-          je cree des outils numeriques pour simplifier le travail des equipes.
+          je crée des outils numériques pour simplifier le travail des équipes.
         </p>
         <p class="about__intro">
-          Je m'interesse a tout ce qui touche au code, du <span class="about__highlight">web</span>
-          a la <span class="about__highlight">VR</span> en passant par le <span class="about__highlight">game dev</span>.
+          Je m'intéresse à tout ce qui touche au code, du <span class="about__highlight">web</span>
+          à la <span class="about__highlight">VR</span> en passant par le <span class="about__highlight">game dev</span>.
         </p>
       </div>
 
@@ -68,18 +68,18 @@ const statRefs = ref([])
 const infoRefs = ref([])
 
 const stats = [
-  { value: 5, suffix: '+', label: 'Annees de code' },
-  { value: 15, suffix: '+', label: 'Projets realises' },
-  { value: 8, suffix: '', label: 'Pays visites' },
-  { value: 3, suffix: '', label: 'Langues parlees' }
+  { value: 5, suffix: '+', label: 'Années de code' },
+  { value: 15, suffix: '+', label: 'Projets réalisés' },
+  { value: 8, suffix: '', label: 'Pays visités' },
+  { value: 3, suffix: '', label: 'Langues parlées' }
 ]
 
 const infos = [
-  { label: 'Formation', value: 'BUT Informatique 3eme annee, IUT de Calais' },
-  { label: 'Parcours', value: 'Conception et Developpement d\'Applications' },
+  { label: 'Formation', value: 'BUT Informatique 3ème année, IUT de Calais' },
+  { label: 'Parcours', value: 'Conception et Développement d\'Applications' },
   { label: 'Alternance', value: 'EDF, CNPE de Gravelines' },
-  { label: 'Diplomes', value: 'BTS SN option IR, Bac general' },
-  { label: 'Candidature', value: 'IMT Nord Europe, cycle ingenieur' },
+  { label: 'Diplômes', value: 'BTS SN option IR, Bac général' },
+  { label: 'Candidature', value: 'IMT Nord Europe, cycle ingénieur' },
   { label: 'Localisation', value: 'Polincove, Hauts-de-France' }
 ]
 

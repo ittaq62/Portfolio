@@ -25,9 +25,9 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 
 const links = [
-  { id: 'about', label: 'A propos' },
-  { id: 'skills', label: 'Competences' },
-  { id: 'experience', label: 'Experience' },
+  { id: 'about', label: 'À propos' },
+  { id: 'skills', label: 'Compétences' },
+  { id: 'experience', label: 'Expérience' },
   { id: 'projets', label: 'Projets' },
   { id: 'contact', label: 'Contact' }
 ]
