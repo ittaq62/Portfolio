@@ -51,6 +51,15 @@
         <p ref="roleEl" class="hero__role">
           <span v-for="(char, i) in roleChars" :key="i" class="hero__role-char" :ref="el => roleCharEls[i] = el">{{ char === ' ' ? '\u00A0' : char }}</span>
         </p>
+
+        <p class="hero__tagline" ref="taglineEl">
+          <span class="hero__tagline-static">Je cr\u00E9e</span>
+          <span class="hero__tagline-rotate">
+            <Transition name="word" mode="out-in">
+              <span :key="currentWordIndex" class="hero__tagline-word">{{ rotatingWords[currentWordIndex] }}</span>
+            </Transition>
+          </span>
+        </p>
       </div>
     </div>
 
@@ -114,7 +123,7 @@
 </template>
 
 <script setup>
-import { ref, reactive, onMounted, computed } from 'vue'
+import { ref, reactive, onMounted, onUnmounted, computed } from 'vue'
 import { gsap } from 'gsap'
 import AnimatedBackground from './AnimatedBackground.vue'
 
@@ -142,8 +151,20 @@ const transitionLabel = ref(null)
 const transitionLine = ref(null)
 const isTransitioning = ref(false)
 
-const roleText = 'DÉVELOPPEUR FULL-STACK'
+const roleText = 'DÉVELOPPEUR POLYVALENT'
 const roleChars = roleText.split('')
+
+// Tagline rotative : montre la polyvalence
+const taglineEl = ref(null)
+const rotatingWords = [
+  'des applications web',
+  'des jeux vidéo',
+  'des expériences VR',
+  'des univers en 3D',
+  'des outils métier'
+]
+const currentWordIndex = ref(0)
+let wordInterval = null
 
 const mouse = reactive({ x: 0, y: 0 })
 
@@ -338,6 +359,14 @@ onMounted(() => {
     ease: 'back.out(1.5)'
   }, '-=0.4')
 
+  // Tagline rotative
+  .from(taglineEl.value, {
+    opacity: 0,
+    y: 20,
+    duration: 0.5,
+    ease: 'power3.out'
+  }, '-=0.2')
+
   // Hotspots pop
   .from(hotspotRefs.value.filter(Boolean), {
     opacity: 0,
@@ -369,6 +398,15 @@ onMounted(() => {
     yoyo: true,
     ease: 'sine.inOut'
   })
+
+  // Demarre la rotation des mots apres l'intro
+  wordInterval = setInterval(() => {
+    currentWordIndex.value = (currentWordIndex.value + 1) % rotatingWords.length
+  }, 2400)
+})
+
+onUnmounted(() => {
+  if (wordInterval) clearInterval(wordInterval)
 })
 </script>
 
@@ -542,6 +580,52 @@ onMounted(() => {
 .hero__role-char {
   display: inline-block;
   will-change: transform, opacity;
+}
+
+/* Tagline rotative */
+.hero__tagline {
+  margin-top: 1.6rem;
+  font-family: var(--font-serif);
+  font-size: clamp(0.95rem, 1.7vw, 1.4rem);
+  font-style: italic;
+  color: var(--text-muted);
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.45em;
+  flex-wrap: wrap;
+}
+
+.hero__tagline-static {
+  white-space: nowrap;
+}
+
+.hero__tagline-rotate {
+  position: relative;
+  display: inline-flex;
+  color: var(--accent);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.hero__tagline-word {
+  display: inline-block;
+}
+
+/* Transition des mots */
+.word-enter-active,
+.word-leave-active {
+  transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.word-enter-from {
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+.word-leave-to {
+  opacity: 0;
+  transform: translateY(-12px);
 }
 
 /* Hotspots */

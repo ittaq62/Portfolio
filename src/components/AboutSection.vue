@@ -13,14 +13,20 @@
       <!-- Texte principal -->
       <div class="about__text" ref="textRef">
         <p class="about__intro">
-          <span ref="introWord">Développeur</span> de 22 ans en 3ème année de BUT Informatique à l'IUT de Calais,
-          parcours <span class="about__highlight">Conception et Développement d'Applications</span>.
-          En alternance chez <span class="about__highlight">EDF</span> au CNPE de Gravelines,
-          je crée des outils numériques pour simplifier le travail des équipes.
+          À 22 ans, je suis <span class="about__highlight">développeur polyvalent</span> et étudiant
+          en 3ème année de BUT Informatique à Calais. Mon truc, c'est de
+          ne jamais me limiter à un seul domaine.
         </p>
         <p class="about__intro">
-          Je m'intéresse à tout ce qui touche au code, du <span class="about__highlight">web</span>
-          à la <span class="about__highlight">VR</span> en passant par le <span class="about__highlight">game dev</span>.
+          Le jour, je conçois des applications métier chez <span class="about__highlight">EDF</span>,
+          à la centrale nucléaire de Gravelines. Le reste du temps, j'explore le
+          <span class="about__highlight">game dev</span>, la <span class="about__highlight">réalité virtuelle</span>
+          sous Unreal Engine, ou je modélise des <span class="about__highlight">mondes en 3D</span> sur Blender.
+        </p>
+        <p class="about__intro">
+          Quand je ne code pas, je <span class="about__highlight">voyage</span> à travers l'Europe,
+          je joue, et j'écoute de la pop (un peu trop fort). Curieux et autodidacte,
+          j'aime apprendre vite et toucher à tout.
         </p>
       </div>
 
@@ -68,9 +74,9 @@ const statRefs = ref([])
 const infoRefs = ref([])
 
 const stats = [
-  { value: 5, suffix: '+', label: 'Années de code' },
   { value: 15, suffix: '+', label: 'Projets réalisés' },
-  { value: 8, suffix: '', label: 'Pays visités' },
+  { value: 6, suffix: '', label: 'Univers techniques' },
+  { value: 8, suffix: '', label: 'Pays explorés' },
   { value: 3, suffix: '', label: 'Langues parlées' }
 ]
 
