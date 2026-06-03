@@ -8,7 +8,7 @@
     <AboutSection />
 
     <MarqueeBand
-      :items="['DÉVELOPPEUR FULL-STACK', 'CRÉATIF', 'PASSIONNÉ', 'CURIEUX', 'AUTONOME']"
+      :items="['DÉVELOPPEUR POLYVALENT', 'CRÉATIF', 'CURIEUX', 'PASSIONNÉ', 'AUTODIDACTE']"
       accent
     />
 
@@ -31,7 +31,7 @@
     <ProjectsSection />
 
     <MarqueeBand
-      :items="['DISPONIBLE POUR ALTERNANCE', 'PROJET EN VUE ?', 'TRAVAILLONS ENSEMBLE']"
+      :items="['UN PROJET EN TÊTE ?', 'ÉCHANGEONS', 'TRAVAILLONS ENSEMBLE']"
       :speed="28"
     />
 

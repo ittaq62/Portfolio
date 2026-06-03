@@ -8,7 +8,7 @@
         <span class="contact__title-line contact__title-line--accent" ref="titleLine2">PROJET</span>
       </h2>
       <p class="contact__subtitle" ref="subtitleRef">
-        Une opportunité d'alternance, un projet en tête, ou juste envie d'échanger ?
+        Un projet, une idée, ou juste envie d'échanger ? Ma boîte mail est toujours ouverte.
       </p>
     </div>
 
