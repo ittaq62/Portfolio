@@ -20,12 +20,15 @@
           class="experience__card"
           :class="[
             'experience__card--' + item.type,
-            { 'experience__card--active': activeCard === i }
+            { 'experience__card--active': activeCard === i, 'experience__card--upcoming': item.upcoming }
           ]"
           @mouseenter="activeCard = i"
           @mouseleave="activeCard = null"
         >
           <div class="experience__card-inner">
+            <!-- Tag A venir -->
+            <span v-if="item.upcoming" class="experience__card-upcoming">À venir</span>
+
             <!-- Badge type -->
             <div class="experience__card-badge">
               <span class="experience__card-badge-dot"></span>
@@ -112,7 +115,10 @@ const timelineProgress = ref(null)
 const hintRef = ref(null)
 const activeCard = ref(null)
 
-const years = ['2022', '2023', '2024', '2025']
+const years = ['2022', '2024', '2026', '2029']
+
+// Logo IMT (placeholder icone ecole : a remplacer par le vrai logo IMT Nord Europe)
+const imtLogo = 'https://api.iconify.design/mdi/school.svg?color=%230b1220'
 
 // Fusionner formations et expériences en une seule liste chronologique
 const items = [
@@ -169,6 +175,26 @@ const items = [
     description: 'Création d\'applications internes avec PowerApps, automatisation avec Power Automate et tableaux de bord Power BI. Alternance.',
     techs: ['PowerApps', 'Power Automate', 'Power BI', 'SharePoint'],
     logo: edfLogo
+  },
+  {
+    type: 'formation',
+    date: '2026 - 2029',
+    title: 'Cycle ingénieur en informatique',
+    company: 'IMT Nord Europe',
+    description: 'Diplôme d\'ingénieur en informatique, en alternance. La prochaine grande étape de mon parcours pour approfondir la conception et l\'architecture logicielle.',
+    techs: [],
+    logo: imtLogo,
+    upcoming: true
+  },
+  {
+    type: 'experience',
+    date: '2026 - 2029',
+    title: 'Apprenti ingénieur',
+    company: 'EDF DIGIT',
+    description: 'Alternance au sein de la DIGIT, l\'entité numérique et informatique du groupe EDF, dans le cadre de mon cycle ingénieur.',
+    techs: [],
+    logo: edfLogo,
+    upcoming: true
   }
 ]
 
@@ -373,6 +399,46 @@ onMounted(() => {
   right: 0;
   height: 3px;
   background: linear-gradient(90deg, #d4a853, transparent);
+}
+
+/* Carte a venir (futur) */
+.experience__card--upcoming .experience__card-inner {
+  border-style: dashed;
+  border-color: rgba(232, 213, 181, 0.3);
+  background: linear-gradient(160deg, rgba(232, 213, 181, 0.04), var(--bg-light));
+}
+
+.experience__card--upcoming .experience__card-inner::before {
+  background: repeating-linear-gradient(
+    90deg,
+    var(--accent),
+    var(--accent) 8px,
+    transparent 8px,
+    transparent 16px
+  ) !important;
+  opacity: 0.7;
+}
+
+.experience__card-upcoming {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  font-family: var(--font-sans);
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  padding: 0.3rem 0.7rem;
+  border: 1px solid rgba(232, 213, 181, 0.35);
+  border-radius: 20px;
+  background: rgba(232, 213, 181, 0.06);
+  z-index: 2;
+  animation: upcomingPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes upcomingPulse {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; }
 }
 
 /* Badge */
