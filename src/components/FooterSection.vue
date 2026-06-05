@@ -6,6 +6,7 @@
         <p class="footer__copy">&copy; {{ year }} Quentin Douilly. Tous droits réservés.</p>
       </div>
       <div class="footer__links">
+        <a href="https://www.linkedin.com/in/quentin-douilly-259b20354/" target="_blank">LinkedIn</a>
         <a href="https://github.com/ittaq62" target="_blank">GitHub</a>
         <a href="mailto:quentindouilly1@gmail.com">Email</a>
       </div>

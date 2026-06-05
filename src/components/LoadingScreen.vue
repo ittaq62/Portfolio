@@ -22,11 +22,20 @@ const barRef = ref(null)
 const countRef = ref(null)
 const done = ref(false)
 
+// Signale au reste du site (hero) que le chargement est termine.
+// Via window : robuste, independant de la reactivite Vue.
+const signalLoaded = () => {
+  if (window.__appLoaded) return
+  window.__appLoaded = true
+  window.dispatchEvent(new Event('app:loaded'))
+}
+
 onMounted(() => {
   // Respecte la preference reduced-motion : pas d'intro
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
   if (reduced) {
     done.value = true
+    signalLoaded()
     return
   }
 
@@ -39,6 +48,7 @@ onMounted(() => {
   const safety = setTimeout(() => {
     if (!done.value) {
       done.value = true
+      signalLoaded()
       document.body.style.overflow = ''
     }
   }, 5000)
@@ -64,6 +74,8 @@ onMounted(() => {
       if (barRef.value) barRef.value.style.width = counter.val + '%'
     },
     onComplete: () => {
+      // Chargement termine : on declenche l'intro du hero
+      signalLoaded()
       // Reveal : le loader remonte pour devoiler le site
       gsap.to(loaderRef.value, {
         yPercent: -100,
