@@ -78,7 +78,7 @@ const infoRefs = ref([])
 
 const stats = [
   { value: 15, suffix: '+', label: 'Projets réalisés' },
-  { value: 6, suffix: '', label: 'Univers techniques' },
+  { value: 12, suffix: '+', label: 'Technologies maîtrisées' },
   { value: 8, suffix: '', label: 'Pays explorés' },
   { value: 3, suffix: '', label: 'Langues parlées' }
 ]
