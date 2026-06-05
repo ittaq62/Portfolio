@@ -13,20 +13,23 @@
       <!-- Texte principal -->
       <div class="about__text" ref="textRef">
         <p class="about__intro">
-          À 22 ans, je suis <span class="about__highlight">développeur polyvalent</span> et étudiant
-          en 3ème année de BUT Informatique à Calais. Mon truc, c'est de
-          ne jamais me limiter à un seul domaine.
+          À 22 ans, je suis <span class="about__highlight">développeur polyvalent</span>,
+          en 3ème année de BUT Informatique à Calais après un
+          <span class="about__highlight">BTS Systèmes Numériques</span>.
+          Ma conviction : un bon développeur n'a pas de frontières.
         </p>
         <p class="about__intro">
-          Le jour, je conçois des applications métier chez <span class="about__highlight">EDF</span>,
-          à la centrale nucléaire de Gravelines. Le reste du temps, j'explore le
-          <span class="about__highlight">game dev</span>, la <span class="about__highlight">réalité virtuelle</span>
-          sous Unreal Engine, ou je modélise des <span class="about__highlight">mondes en 3D</span> sur Blender.
+          En alternance chez <span class="about__highlight">EDF</span>, à la centrale nucléaire
+          de Gravelines, je conçois des applications métier qui simplifient le quotidien des équipes.
+          Mais je n'aime pas me cantonner à un seul terrain :
+          <span class="about__highlight">web, logiciel, mobile, jeux vidéo, 3D ou réalité virtuelle</span>,
+          tout ce qui se code m'attire. Si je ne connais pas, j'apprends.
         </p>
         <p class="about__intro">
-          Quand je ne code pas, je <span class="about__highlight">voyage</span> à travers l'Europe,
-          je joue, et j'écoute de la pop (un peu trop fort). Curieux et autodidacte,
-          j'aime apprendre vite et toucher à tout.
+          L'an prochain, je poursuis en <span class="about__highlight">école d'ingénieur à l'IMT Nord Europe</span>.
+          En dehors du code, je <span class="about__highlight">voyage</span> dès que je peux
+          (déjà 8 pays en Europe), je joue, et la musique ne me quitte jamais.
+          Curieux et autodidacte, j'aime apprendre vite et toucher à tout.
         </p>
       </div>
 
