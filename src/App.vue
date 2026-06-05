@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <LoadingScreen />
     <CustomCursor />
     <ScrollProgress />
     <NavBar />
@@ -49,6 +50,7 @@ import Lenis from 'lenis'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
+import LoadingScreen from './components/LoadingScreen.vue'
 import CustomCursor from './components/CustomCursor.vue'
 import ScrollProgress from './components/ScrollProgress.vue'
 import NavBar from './components/NavBar.vue'
