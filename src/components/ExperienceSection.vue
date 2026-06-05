@@ -100,6 +100,7 @@ import edfLogo from '../assets/images/edf.png'
 import iutLogo from '../assets/images/iut.png'
 import blaisePascalLogo from '../assets/images/blaise-pascal.png'
 import sophieBerthelotLogo from '../assets/images/sophie-berthelot.png'
+import imtLogo from '../assets/images/imt.png'
 
 const { gsap, ScrollTrigger } = useScrollAnimation()
 
@@ -116,9 +117,6 @@ const hintRef = ref(null)
 const activeCard = ref(null)
 
 const years = ['2022', '2024', '2026', '2029']
-
-// Logo IMT (placeholder icone ecole : a remplacer par le vrai logo IMT Nord Europe)
-const imtLogo = 'https://api.iconify.design/mdi/school.svg?color=%230b1220'
 
 // Fusionner formations et expériences en une seule liste chronologique
 const items = [
