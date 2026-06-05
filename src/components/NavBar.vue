@@ -1,11 +1,15 @@
 <template>
   <nav class="navbar" :class="{ scrolled: isScrolled }">
-    <a href="#" class="navbar__logo">Q.</a>
+    <a href="#" class="navbar__logo" @click="closeMenu">Q.</a>
+
+    <!-- Liens desktop -->
     <ul class="navbar__links">
       <li v-for="(link, i) in links" :key="i">
         <a :href="'#' + link.id">{{ link.label }}</a>
       </li>
     </ul>
+
+    <!-- Socials desktop -->
     <div class="navbar__socials">
       <a href="https://github.com/ittaq62" target="_blank" class="navbar__social" aria-label="GitHub">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -18,11 +22,45 @@
         </svg>
       </a>
     </div>
+
+    <!-- Burger (mobile) -->
+    <button
+      class="navbar__burger"
+      :class="{ open: isMenuOpen }"
+      @click="toggleMenu"
+      aria-label="Menu"
+      :aria-expanded="isMenuOpen"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <!-- Overlay menu mobile -->
+    <div class="navbar__mobile" :class="{ open: isMenuOpen }">
+      <ul class="navbar__mobile-links">
+        <li
+          v-for="(link, i) in links"
+          :key="i"
+          :style="{ transitionDelay: isMenuOpen ? (0.06 * i + 0.15) + 's' : '0s' }"
+        >
+          <a :href="'#' + link.id" @click="closeMenu">
+            <span class="navbar__mobile-index">0{{ i + 1 }}</span>
+            {{ link.label }}
+          </a>
+        </li>
+      </ul>
+      <div class="navbar__mobile-socials">
+        <a href="https://github.com/ittaq62" target="_blank">GitHub</a>
+        <a href="https://www.linkedin.com/in/quentin-douilly-259b20354/" target="_blank">LinkedIn</a>
+        <a href="mailto:quentindouilly1@gmail.com">Email</a>
+      </div>
+    </div>
   </nav>
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted, watch } from 'vue'
 
 const links = [
   { id: 'about', label: 'À propos' },
@@ -34,13 +72,30 @@ const links = [
 ]
 
 const isScrolled = ref(false)
+const isMenuOpen = ref(false)
 
 const handleScroll = () => {
   isScrolled.value = window.scrollY > 50
 }
 
+const toggleMenu = () => {
+  isMenuOpen.value = !isMenuOpen.value
+}
+
+const closeMenu = () => {
+  isMenuOpen.value = false
+}
+
+// Bloque le scroll du body quand le menu est ouvert
+watch(isMenuOpen, (open) => {
+  document.body.style.overflow = open ? 'hidden' : ''
+})
+
 onMounted(() => window.addEventListener('scroll', handleScroll))
-onUnmounted(() => window.removeEventListener('scroll', handleScroll))
+onUnmounted(() => {
+  window.removeEventListener('scroll', handleScroll)
+  document.body.style.overflow = ''
+})
 </script>
 
 <style scoped>
@@ -70,6 +125,7 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
   font-weight: 900;
   color: var(--accent);
   transition: opacity 0.3s;
+  z-index: 102;
 }
 
 .navbar__logo:hover {
@@ -128,9 +184,136 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
   transform: translateY(-2px);
 }
 
+/* Burger */
+.navbar__burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 32px;
+  height: 32px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 102;
+  padding: 0;
+}
+
+.navbar__burger span {
+  display: block;
+  width: 26px;
+  height: 2px;
+  background: var(--accent);
+  border-radius: 2px;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.3s;
+}
+
+.navbar__burger.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.navbar__burger.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.navbar__burger.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Menu mobile overlay */
+.navbar__mobile {
+  position: fixed;
+  inset: 0;
+  z-index: 101;
+  background: rgba(8, 12, 20, 0.98);
+  backdrop-filter: blur(20px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  /* fermeture : on cache la visibilite APRES le fondu (delai 0.4s) */
+  transition: opacity 0.4s ease, visibility 0s linear 0.4s;
+}
+
+.navbar__mobile.open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  /* ouverture : visible immediatement */
+  transition: opacity 0.4s ease, visibility 0s linear 0s;
+}
+
+.navbar__mobile-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  text-align: center;
+}
+
+.navbar__mobile-links li {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s cubic-bezier(0.25, 1, 0.5, 1), transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.navbar__mobile.open .navbar__mobile-links li {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.navbar__mobile-links a {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.8rem;
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text);
+  transition: color 0.3s;
+}
+
+.navbar__mobile-links a:hover {
+  color: var(--accent);
+}
+
+.navbar__mobile-index {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+}
+
+.navbar__mobile-socials {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.navbar__mobile-socials a {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  transition: color 0.3s;
+}
+
+.navbar__mobile-socials a:hover {
+  color: var(--accent);
+}
+
 @media (max-width: 640px) {
-  .navbar__links {
+  .navbar__links,
+  .navbar__socials {
     display: none;
+  }
+
+  .navbar__burger {
+    display: flex;
   }
 }
 </style>
