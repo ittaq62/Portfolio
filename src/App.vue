@@ -30,6 +30,8 @@
 
     <ProjectsSection />
 
+    <CvSection />
+
     <MarqueeBand
       :items="['UN PROJET EN TÊTE ?', 'ÉCHANGEONS', 'TRAVAILLONS ENSEMBLE']"
       :speed="28"
@@ -55,6 +57,7 @@ import AboutSection from './components/AboutSection.vue'
 import SkillsSection from './components/SkillsSection.vue'
 import ExperienceSection from './components/ExperienceSection.vue'
 import ProjectsSection from './components/ProjectsSection.vue'
+import CvSection from './components/CvSection.vue'
 import ContactSection from './components/ContactSection.vue'
 import FooterSection from './components/FooterSection.vue'
 import MarqueeBand from './components/MarqueeBand.vue'
