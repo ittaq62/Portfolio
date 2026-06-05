@@ -85,7 +85,7 @@ const infos = [
   { label: 'Parcours', value: 'Conception et Développement d\'Applications' },
   { label: 'Alternance', value: 'EDF, CNPE de Gravelines' },
   { label: 'Diplômes', value: 'BTS SN option IR, Bac général' },
-  { label: 'Candidature', value: 'IMT Nord Europe, cycle ingénieur' },
+  { label: 'Prochaine étape', value: 'Élève-ingénieur à l\'IMT Nord Europe' },
   { label: 'Localisation', value: 'Polincove, Hauts-de-France' }
 ]
 

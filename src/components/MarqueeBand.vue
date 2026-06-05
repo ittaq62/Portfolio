@@ -12,7 +12,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 import { gsap } from 'gsap'
 
 const props = defineProps({
@@ -36,22 +36,30 @@ const props = defineProps({
 
 const trackRef = ref(null)
 
+let loopTween = null
+
 onMounted(() => {
   if (!trackRef.value) return
 
-  // Animation continue de defilement
-  const totalWidth = trackRef.value.scrollWidth / 4
-  const direction = props.reverse ? totalWidth : -totalWidth
+  // 4 copies identiques : deplacer d'exactement 25% (= une copie) boucle sans saccade.
+  // fromTo garantit que le reset (repeat) retombe sur une position visuellement identique.
+  const fromX = props.reverse ? -25 : 0
+  const toX = props.reverse ? 0 : -25
 
-  gsap.to(trackRef.value, {
-    x: direction,
-    duration: props.speed,
-    repeat: -1,
-    ease: 'none',
-    modifiers: {
-      x: gsap.utils.unitize(x => parseFloat(x) % totalWidth)
+  loopTween = gsap.fromTo(
+    trackRef.value,
+    { xPercent: fromX },
+    {
+      xPercent: toX,
+      duration: props.speed,
+      repeat: -1,
+      ease: 'none'
     }
-  })
+  )
+})
+
+onUnmounted(() => {
+  if (loopTween) loopTween.kill()
 })
 </script>
 

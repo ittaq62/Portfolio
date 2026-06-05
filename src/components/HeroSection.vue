@@ -55,6 +55,7 @@
         <p class="hero__tagline" ref="taglineEl">
           <span class="hero__tagline-static">Je cr\u00E9e</span>
           <span class="hero__tagline-rotate">
+            <span class="hero__tagline-sizer" aria-hidden="true">{{ longestWord }}</span>
             <Transition name="word" mode="out-in">
               <span :key="currentWordIndex" class="hero__tagline-word">{{ rotatingWords[currentWordIndex] }}</span>
             </Transition>
@@ -164,6 +165,9 @@ const rotatingWords = [
   'des outils métier'
 ]
 const currentWordIndex = ref(0)
+const longestWord = computed(() =>
+  rotatingWords.reduce((a, b) => (b.length > a.length ? b : a), '')
+)
 let wordInterval = null
 
 const mouse = reactive({ x: 0, y: 0 })
@@ -602,14 +606,25 @@ onUnmounted(() => {
 
 .hero__tagline-rotate {
   position: relative;
-  display: inline-flex;
+  display: inline-block;
+  text-align: left;
   color: var(--accent);
   font-weight: 600;
   white-space: nowrap;
 }
 
+/* Sizer invisible : reserve la largeur du mot le plus long */
+.hero__tagline-sizer {
+  visibility: hidden;
+  white-space: nowrap;
+}
+
+/* Le mot anime est positionne par-dessus le sizer */
 .hero__tagline-word {
-  display: inline-block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  white-space: nowrap;
 }
 
 /* Transition des mots */

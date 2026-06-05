@@ -165,7 +165,7 @@ const skills = [
     name: 'Flutter',
     icon: '<svg viewBox="0 0 128 128"><path fill="#44D1FD" d="M12.3 64.2L76.3 0h39.4L32 83.6zM76.3 128h39.4L81.6 93.9l34.1-34.8H76.3L42.2 93.5z"/><path fill="#1FBCFD" d="M42.2 93.5l19.6-20.1 19.8 19.8-19.6 20.3z"/><path fill="#08589C" d="M42.2 93.5L70 86.9l11.6 6.4z"/></svg>',
     category: 'Mobile',
-    context: 'Développement mobile cross-platform, projets perso',
+    context: 'Module de développement mobile en BUT Informatique',
     color: 'rgba(68, 209, 253, 0.15)'
   },
   {

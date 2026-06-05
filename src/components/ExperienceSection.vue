@@ -148,8 +148,8 @@ const items = [
     date: '2024 - En cours',
     title: 'BUT Informatique 3ème année',
     company: 'IUT du Littoral Côte d\'Opale, Calais',
-    description: 'Parcours Conception et Développement d\'Applications. Formation en alternance.',
-    techs: ['Java', 'Vue.js', 'Docker'],
+    description: 'Parcours Conception et Développement d\'Applications. Formation en alternance couvrant le développement web, logiciel, mobile, la gestion de bases de données et la 3D.',
+    techs: ['Java', 'Python', 'C/C++', 'Vue.js', 'PHP', 'SQL', 'Docker', 'Flutter'],
     logo: iutLogo
   },
   {
