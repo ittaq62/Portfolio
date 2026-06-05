@@ -310,8 +310,10 @@ onMounted(() => {
     })
   })
 
-  // Timeline d'intro
-  const tl = gsap.timeline({ defaults: { ease: 'power4.out' } })
+  // Timeline d'intro (en pause : les etats de depart "from" s'appliquent
+  // immediatement grace a immediateRender, donc tout est cache derriere le
+  // loader ; on jouera la timeline a la fin du chargement)
+  const tl = gsap.timeline({ defaults: { ease: 'power4.out' }, paused: true })
 
   // Lignes SVG apparaissent
   tl.from('.hero__line', {
@@ -394,7 +396,7 @@ onMounted(() => {
     duration: 0.5
   }, '-=0.2')
 
-  // Animation continue du gradient
+  // Animation continue du gradient (fond, peut tourner des le debut)
   gsap.to('.hero__gradient', {
     backgroundPosition: '200% 200%',
     duration: 15,
@@ -403,10 +405,22 @@ onMounted(() => {
     ease: 'sine.inOut'
   })
 
-  // Demarre la rotation des mots apres l'intro
-  wordInterval = setInterval(() => {
-    currentWordIndex.value = (currentWordIndex.value + 1) % rotatingWords.length
-  }, 2400)
+  // Lance l'intro + la rotation des mots APRES le chargement
+  const startIntro = () => {
+    tl.play()
+    if (!wordInterval) {
+      wordInterval = setInterval(() => {
+        currentWordIndex.value = (currentWordIndex.value + 1) % rotatingWords.length
+      }, 2400)
+    }
+  }
+
+  // Lance l'intro quand le chargement est termine (evenement window robuste)
+  if (window.__appLoaded) {
+    startIntro()
+  } else {
+    window.addEventListener('app:loaded', startIntro, { once: true })
+  }
 })
 
 onUnmounted(() => {
