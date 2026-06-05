@@ -1,0 +1,22 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 /MediaBox [0 0 595 842] >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /Resources << /Font << /F1 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >> >> >> /Contents 4 0 R >>
+endobj
+4 0 obj
+<< /Length 135 >>
+stream
+BT /F1 28 Tf 70 770 Td (Placez votre CV ici) Tj ET
+BT /F1 13 Tf 70 730 Td (Remplacez le fichier public/cv.pdf par votre vrai CV) Tj ET
+endstream
+endobj
+trailer
+<< /Size 5 /Root 1 0 R >>
+startxref
+0
+%%EOF
