@@ -28,7 +28,7 @@
         <p class="about__intro">
           L'an prochain, je poursuis en <span class="about__highlight">école d'ingénieur à l'IMT Nord Europe</span>.
           En dehors du code, je <span class="about__highlight">voyage</span> dès que je peux
-          (déjà 8 pays en Europe), je joue, et la musique ne me quitte jamais.
+          (déjà 12 pays au compteur), je joue, et la musique ne me quitte jamais.
           Curieux et autodidacte, j'aime apprendre vite et toucher à tout.
         </p>
       </div>
@@ -79,7 +79,7 @@ const infoRefs = ref([])
 const stats = [
   { value: 15, suffix: '+', label: 'Projets réalisés' },
   { value: 12, suffix: '+', label: 'Technologies maîtrisées' },
-  { value: 8, suffix: '', label: 'Pays explorés' },
+  { value: 12, suffix: '', label: 'Pays explorés' },
   { value: 3, suffix: '', label: 'Langues parlées' }
 ]
 
