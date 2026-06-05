@@ -53,7 +53,7 @@
         </p>
 
         <p class="hero__tagline" ref="taglineEl">
-          <span class="hero__tagline-static">Je cr\u00E9e</span>
+          <span class="hero__tagline-static">Je crée</span>
           <span class="hero__tagline-rotate">
             <span class="hero__tagline-sizer" aria-hidden="true">{{ longestWord }}</span>
             <Transition name="word" mode="out-in">
